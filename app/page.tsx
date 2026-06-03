@@ -16,6 +16,7 @@ import {
   Sparkles,
   Stars,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -30,24 +31,28 @@ const navGroups = [
         color: "text-coral-500",
         bg: "bg-coral-100",
         active: true,
+        href: "/",
       },
       {
         label: "AI Assistant",
         icon: Bot,
         color: "text-violet-500",
         bg: "bg-violet-100",
+        href: "#",
       },
       {
         label: "Calendar",
         icon: CalendarDays,
         color: "text-sky-500",
         bg: "bg-sky-100",
+        href: "/calendar",
       },
       {
         label: "Task / Kanban",
         icon: Columns3,
         color: "text-teal-500",
         bg: "bg-teal-100",
+        href: "#",
       },
     ],
   },
@@ -59,24 +64,28 @@ const navGroups = [
         icon: NotebookTabs,
         color: "text-amber-500",
         bg: "bg-amber-100",
+        href: "#",
       },
       {
         label: "Whiteboard",
         icon: Palette,
         color: "text-emerald-500",
         bg: "bg-emerald-100",
+        href: "#",
       },
       {
         label: "Pages / Spaces",
         icon: LibraryBig,
         color: "text-rose-500",
         bg: "bg-rose-100",
+        href: "#",
       },
       {
         label: "AI Template Builder",
         icon: Sparkles,
         color: "text-fuchsia-500",
         bg: "bg-fuchsia-100",
+        href: "#",
       },
     ],
   },
@@ -88,6 +97,7 @@ const navGroups = [
         icon: Settings,
         color: "text-slate-500",
         bg: "bg-slate-100",
+        href: "#",
       },
     ],
   },
@@ -158,9 +168,9 @@ export default function Home() {
                     const Icon = item.icon;
 
                     return (
-                      <button
-                        type="button"
+                      <Link
                         key={item.label}
+                        href={item.href}
                         title={isCollapsed ? item.label : undefined}
                         className={cn(
                           "group flex h-8 w-full items-center rounded-[0.7rem] font-medium transition",
@@ -179,7 +189,7 @@ export default function Home() {
                           <Icon className={cn("size-3.5", item.color)} aria-hidden="true" />
                         </span>
                         {!isCollapsed && <span className="truncate text-[0.72rem]">{item.label}</span>}
-                      </button>
+                      </Link>
                     );
                   })}
                 </div>
